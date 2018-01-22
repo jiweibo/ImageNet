@@ -1,9 +1,13 @@
+import os
+import torch
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 
-model_urls = {
-    'alexnet': 'https://download.pytorch.org/models/alexnet-owt-4df8aa71.pth',
-}
+# model_urls = {
+#     'alexnet': 'https://download.pytorch.org/models/alexnet-owt-4df8aa71.pth',
+# }
+models_dir = '~/.torch/models'
+model_name = 'alexnet.pth'
 
 class AlexNet(nn.Module):
     def __init__(self, num_classes=1000):
@@ -55,5 +59,6 @@ def alexnet(pretrained=False, **kwargs):
     """
     model = AlexNet(**kwargs)
     if pretrained:
-        model.load_state_dict(model_zoo.load_url(model_urls['alexnet']))
+        # model.load_state_dict(model_zoo.load_url(model_urls['alexnet']))
+        model.load_state_dict(torch.load(os.path.join(models_dir, model_name)))
     return model

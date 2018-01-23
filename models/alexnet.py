@@ -6,7 +6,7 @@ import torch.utils.model_zoo as model_zoo
 # model_urls = {
 #     'alexnet': 'https://download.pytorch.org/models/alexnet-owt-4df8aa71.pth',
 # }
-models_dir = '~/.torch/models'
+models_dir = '/home/jiweibo/.torch/models'
 model_name = 'alexnet.pth'
 
 class AlexNet(nn.Module):

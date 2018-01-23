@@ -102,3 +102,5 @@ ENV/
 
 # pycharm
 .idea/
+
+*.pth

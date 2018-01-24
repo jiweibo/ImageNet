@@ -43,6 +43,6 @@ def data_loader(root, batch_size=256, workers=1, pin_memory=True):
         batch_size=batch_size,
         shuffle=False,
         num_workers=workers,
-        pin_memory=True
+        pin_memory=pin_memory
     )
     return train_loader, val_loader

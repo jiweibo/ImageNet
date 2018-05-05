@@ -87,3 +87,5 @@ The results of a single model on ILSVRC-2012 validation set.
 [PyTorch Examples](https://github.com/pytorch/examples/tree/master/imagenet)
 
 [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
+
+[SqueezeNet](https://arxiv.org/abs/1602.07360)

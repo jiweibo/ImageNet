@@ -1,11 +1,11 @@
 # ImageNet
 
-This implements training of popular model architectures, such as AlexNet, ResNet and VGG on the ImageNet dataset(Now we only supported alexnet).
+This implements training of popular model architectures, such as AlexNet, ResNet and VGG on the ImageNet dataset(Now we supported alexnet squeezenet).
 
 
 ## Requirements
 
-* PyTorch 0.3.0
+* PyTorch 0.4.0
 * cuda && cudnn
 * Download the ImageNet dataset and move validation images to labeled subfolders
   * To do this, you can use the following script:
@@ -35,7 +35,8 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -a ARCH, --arch ARCH  model architecture: alexnet (default: alexnet)
+  -a ARCH, --arch ARCH  model architecture: alexnet | squeezenet1_0 |
+                        squeezenet1_1 (default: alexnet)
   --epochs N            numer of total epochs to run
   --start-epoch N       manual epoch number (useful to restarts)
   -b N, --batch-size N  mini-batch size (default: 256)
@@ -53,6 +54,33 @@ optional arguments:
 
 ```
 
+
+## Result
+
+The results of a single model on ILSVRC-2012 validation set.
+
+<table>
+    <tr>
+        <th>Model</th>
+        <th>top1@prec (val)</th>
+        <th>top5@prec (val)</th>
+    </tr>
+    <tr>
+        <th>AlexNet</th>
+        <th>56.522%</th>
+        <th>79.066%</th>
+    </tr>
+    <tr>
+        <th>SqueezeNet1_0</th>
+        <th>58.092%</th>
+        <th>80.420%</th>
+    </tr>
+    <tr>
+        <th>SqueezeNet1_1</th>
+        <th>58.178%</th>
+        <th>80.624%</th>
+    </tr>
+</table>
 
 ## Acknowledgement
 

@@ -6,13 +6,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data
-from torch.autograd import Variable
 
-from models.alexnet import alexnet
+from models import *
 from data_loader import data_loader
 from helper import AverageMeter, save_checkpoint, accuracy, adjust_learning_rate
 
-model_names = ['alexnet']
+model_names = ['alexnet', 'squeezenet1_0', 'squeezenet1_1']
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('data', metavar='DIR', help='path to dataset')
@@ -43,7 +42,7 @@ parser.add_argument('--resume', default='', type=str, metavar='PATH',
 parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',
                     help='evaluate model on validation set')
 
-best_prec1 = 0
+best_prec1 = 0.0
 
 
 def main():
@@ -53,10 +52,17 @@ def main():
     # create model
     if args.pretrained:
         print("=> using pre-trained model '{}'".format(args.arch))
-        model = alexnet(pretrained=args.pretrained)
     else:
         print("=> creating model '{}'".format(args.arch))
+
+    if args.arch == 'alexnet':
         model = alexnet(pretrained=args.pretrained)
+    elif args.arch == 'squeezenet1_0':
+        model = squeezenet1_0(pretrained=args.pretrained)
+    elif args.arch == 'squeezenet1_1':
+        model = squeezenet1_1(pretrained=args.pretrained)
+    else:
+        raise NotImplementedError
 
     # use cuda
     model.cuda()
@@ -109,7 +115,7 @@ def main():
             'state_dict': model.state_dict(),
             'best_prec1': best_prec1,
             'optimizer': optimizer.state_dict()
-        }, is_best)
+        }, is_best, args.arch+'.pth')
 
 
 def train(train_loader, model, criterion, optimizer, epoch, print_freq):
@@ -129,16 +135,14 @@ def train(train_loader, model, criterion, optimizer, epoch, print_freq):
 
         target = target.cuda(async=True)
         input = input.cuda(async=True)
-        input_var = Variable(input)
-        target_var = Variable(target)
 
         # compute output
-        output = model(input_var)
-        loss = criterion(output, target_var)
+        output = model(input)
+        loss = criterion(output, target)
 
         # measure accuracy and record loss
         prec1, prec5 = accuracy(output.data, target, topk=(1, 5))
-        losses.update(loss.data[0], input.size(0))
+        losses.update(loss.item(), input.size(0))
         top1.update(prec1[0], input.size(0))
         top5.update(prec1[0], input.size(0))
 
@@ -176,16 +180,13 @@ def validate(val_loader, model, criterion, print_freq):
         target = target.cuda(async=True)
         input = input.cuda(async=True)
         with torch.no_grad():
-            input_var = Variable(input)
-            target_var = Variable(target)
-
             # compute output
-            output = model(input_var)
-            loss = criterion(output, target_var)
+            output = model(input)
+            loss = criterion(output, target)
 
             # measure accuracy and record loss
             prec1, prec5 = accuracy(output.data, target, topk=(1, 5))
-            losses.update(loss.data[0], input.size(0))
+            losses.update(loss.item(), input.size(0))
             top1.update(prec1[0], input.size(0))
             top5.update(prec5[0], input.size(0))
 

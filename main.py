@@ -11,7 +11,8 @@ from models import *
 from data_loader import data_loader
 from helper import AverageMeter, save_checkpoint, accuracy, adjust_learning_rate
 
-model_names = ['alexnet', 'squeezenet1_0', 'squeezenet1_1']
+model_names = ['alexnet', 'squeezenet1_0', 'squeezenet1_1', 'densenet121',
+               'densenet169', 'densenet201', 'densenet201', 'densenet161']
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('data', metavar='DIR', help='path to dataset')
@@ -61,6 +62,14 @@ def main():
         model = squeezenet1_0(pretrained=args.pretrained)
     elif args.arch == 'squeezenet1_1':
         model = squeezenet1_1(pretrained=args.pretrained)
+    elif args.arch == 'densenet121':
+        model = densenet121(pretrained=args.pretrained)
+    elif args.arch == 'densenet169':
+        model = densenet169(pretrained=args.pretrained)
+    elif args.arch == 'densenet201':
+        model = densenet201(pretrained=args.pretrained)
+    elif args.arch == 'densenet161':
+        model = densenet161(pretrained=args.pretrained)
     else:
         raise NotImplementedError
 

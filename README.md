@@ -1,6 +1,6 @@
 # ImageNet
 
-This implements training of popular model architectures, such as AlexNet, ResNet and VGG on the ImageNet dataset(Now we supported alexnet squeezenet).
+This implements training of popular model architectures, such as AlexNet, SqueezeNet, ResNet, DenseNet and VGG on the ImageNet dataset(Now we supported alexnet, squeezenet, densenet).
 
 
 ## Requirements
@@ -36,7 +36,9 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -a ARCH, --arch ARCH  model architecture: alexnet | squeezenet1_0 |
-                        squeezenet1_1 (default: alexnet)
+                        squeezenet1_1 | densenet121 | densenet169 |
+                        densenet201 | densenet201 | densenet161 (default:
+                        alexnet)
   --epochs N            numer of total epochs to run
   --start-epoch N       manual epoch number (useful to restarts)
   -b N, --batch-size N  mini-batch size (default: 256)
@@ -64,21 +66,57 @@ The results of a single model on ILSVRC-2012 validation set.
         <th>Model</th>
         <th>top1@prec (val)</th>
         <th>top5@prec (val)</th>
+	<th>Parameters</th>
+	<th>ModelSize(MB)</th>
     </tr>
     <tr>
         <th>AlexNet</th>
         <th>56.522%</th>
         <th>79.066%</th>
+        <th></th>
+        <th>244</th>
     </tr>
     <tr>
         <th>SqueezeNet1_0</th>
         <th>58.092%</th>
         <th>80.420%</th>
+        <th></th>
+        <th>5</th>
     </tr>
     <tr>
         <th>SqueezeNet1_1</th>
         <th>58.178%</th>
         <th>80.624%</th>
+        <th></th>
+        <th>5</th>
+    </tr>
+    <tr>
+        <th>DenseNet121</th>
+        <th>74.434%</th>
+        <th>91.972%</th>
+        <th></th>
+        <th>32</th>
+    </tr>
+    <tr>
+        <th>DenseNet169</th>
+        <th>75.600%</th>
+        <th>92.806%</th>
+        <th></th>
+        <th>57</th>
+    </tr>
+    <tr>
+        <th>DenseNet201</th>
+        <th>76.896%</th>
+        <th>93.370%</th>
+        <th></th>
+        <th>81</th>
+    </tr>
+    <tr>
+        <th>DenseNet161</th>
+        <th>77.138%</th>
+        <th>93.560%</th>
+        <th></th>
+        <th>116</th>
     </tr>
 </table>
 
@@ -89,3 +127,5 @@ The results of a single model on ILSVRC-2012 validation set.
 [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 
 [SqueezeNet](https://arxiv.org/abs/1602.07360)
+
+[DenseNet](https://arxiv.org/pdf/1608.06993.pdf)

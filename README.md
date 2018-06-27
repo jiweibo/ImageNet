@@ -37,8 +37,9 @@ optional arguments:
   -h, --help            show this help message and exit
   -a ARCH, --arch ARCH  model architecture: alexnet | squeezenet1_0 |
                         squeezenet1_1 | densenet121 | densenet169 |
-                        densenet201 | densenet201 | densenet161 (default:
-                        alexnet)
+                        densenet201 | densenet201 | densenet161 | vgg11 |
+                        vgg11_bn | vgg13 | vgg13_bn | vgg16 | vgg16_bn | vgg19
+                        | vgg19_bn (default: alexnet)
   --epochs N            numer of total epochs to run
   --start-epoch N       manual epoch number (useful to restarts)
   -b N, --batch-size N  mini-batch size (default: 256)
@@ -117,6 +118,62 @@ The results of a single model on ILSVRC-2012 validation set.
         <th>93.560%</th>
         <th></th>
         <th>116</th>
+    </tr>
+    <tr>
+        <th>Vgg11</th>
+        <th>69.020%</th>
+        <th>88.628%</th>
+        <th></th>
+        <th>532</th>
+    </tr>
+    <tr>
+        <th>Vgg13</th>
+        <th>69.928%</th>
+        <th>89.246%</th>
+        <th></th>
+        <th>532</th>
+    </tr>
+    <tr>
+        <th>Vgg16</th>
+        <th>71.592%</th>
+        <th>90.382%</th>
+        <th></th>
+        <th>554</th>
+    </tr>
+    <tr>
+        <th>Vgg19</th>
+        <th>72.376%</th>
+        <th>90.876%</th>
+        <th></th>
+        <th>574</th>
+    </tr>
+    <tr>
+        <th>Vgg11_bn</th>
+        <th>70.370%</th>
+        <th>89.810%</th>
+        <th></th>
+        <th>532</th>
+    </tr>
+    <tr>
+        <th>Vgg13_bn</th>
+        <th>71.586%</th>
+        <th>90.374%</th>
+        <th></th>
+        <th>532</th>
+    </tr>
+    <tr>
+        <th>Vgg16_bn</th>
+        <th>73.360%</th>
+        <th>91.516%</th>
+        <th></th>
+        <th>554</th>
+    </tr>
+    <tr>
+        <th>Vgg19_bn</th>
+        <th>74.218%</th>
+        <th>91.842%</th>
+        <th></th>
+        <th>574</th>
     </tr>
 </table>
 

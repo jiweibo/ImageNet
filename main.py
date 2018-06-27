@@ -11,8 +11,12 @@ from models import *
 from data_loader import data_loader
 from helper import AverageMeter, save_checkpoint, accuracy, adjust_learning_rate
 
-model_names = ['alexnet', 'squeezenet1_0', 'squeezenet1_1', 'densenet121',
-               'densenet169', 'densenet201', 'densenet201', 'densenet161']
+model_names = [
+    'alexnet', 'squeezenet1_0', 'squeezenet1_1', 'densenet121',
+    'densenet169', 'densenet201', 'densenet201', 'densenet161',
+    'vgg11', 'vgg11_bn', 'vgg13', 'vgg13_bn', 'vgg16', 'vgg16_bn',
+    'vgg19', 'vgg19_bn',
+]
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('data', metavar='DIR', help='path to dataset')
@@ -70,6 +74,22 @@ def main():
         model = densenet201(pretrained=args.pretrained)
     elif args.arch == 'densenet161':
         model = densenet161(pretrained=args.pretrained)
+    elif args.arch == 'vgg11':
+        model = vgg11(pretrained=args.pretrained)
+    elif args.arch == 'vgg13':
+        model = vgg13(pretrained=args.pretrained)
+    elif args.arch == 'vgg16':
+        model = vgg16(pretrained=args.pretrained)
+    elif args.arch == 'vgg19':
+        model = vgg19(pretrained=args.pretrained)
+    elif args.arch == 'vgg11_bn':
+        model = vgg11_bn(pretrained=args.pretrained)
+    elif args.arch == 'vgg13_bn':
+        model = vgg13_bn(pretrained=args.pretrained)
+    elif args.arch == 'vgg16_bn':
+        model = vgg16_bn(pretrained=args.pretrained)
+    elif args.arch == 'vgg19_bn':
+        model = vgg19_bn(pretrained=args.pretrained)
     else:
         raise NotImplementedError
 

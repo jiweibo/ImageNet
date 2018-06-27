@@ -1,6 +1,6 @@
 # ImageNet
 
-This implements training of popular model architectures, such as AlexNet, SqueezeNet, ResNet, DenseNet and VGG on the ImageNet dataset(Now we supported alexnet, squeezenet, densenet).
+This implements training of popular model architectures, such as AlexNet, SqueezeNet, ResNet, DenseNet and VGG on the ImageNet dataset(Now we supported alexnet, vgg, squeezenet, densenet).
 
 
 ## Requirements

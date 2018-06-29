@@ -15,7 +15,8 @@ model_names = [
     'alexnet', 'squeezenet1_0', 'squeezenet1_1', 'densenet121',
     'densenet169', 'densenet201', 'densenet201', 'densenet161',
     'vgg11', 'vgg11_bn', 'vgg13', 'vgg13_bn', 'vgg16', 'vgg16_bn',
-    'vgg19', 'vgg19_bn',
+    'vgg19', 'vgg19_bn', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
+    'resnet152'
 ]
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
@@ -90,6 +91,16 @@ def main():
         model = vgg16_bn(pretrained=args.pretrained)
     elif args.arch == 'vgg19_bn':
         model = vgg19_bn(pretrained=args.pretrained)
+    elif args.arch == 'resnet18':
+        model = resnet18(pretrained=args.pretrained)
+    elif args.arch == 'resnet34':
+        model = resnet34(pretrained=args.pretrained)
+    elif args.arch == 'resnet50':
+        model = resnet50(pretrained=args.pretrained)
+    elif args.arch == 'resnet101':
+        model = resnet101(pretrained=args.pretrained)
+    elif args.arch == 'resnet152':
+        model = resnet152(pretrained=args.pretrained)
     else:
         raise NotImplementedError
 
@@ -144,7 +155,7 @@ def main():
             'state_dict': model.state_dict(),
             'best_prec1': best_prec1,
             'optimizer': optimizer.state_dict()
-        }, is_best, args.arch+'.pth')
+        }, is_best, args.arch + '.pth')
 
 
 def train(train_loader, model, criterion, optimizer, epoch, print_freq):
